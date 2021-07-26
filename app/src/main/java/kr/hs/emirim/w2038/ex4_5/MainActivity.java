@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        edtItem = findViewById(R.id.edit_item);
         arrList = new ArrayList<String>();
         ListView list1 = findViewById(R.id.list1);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrList);
