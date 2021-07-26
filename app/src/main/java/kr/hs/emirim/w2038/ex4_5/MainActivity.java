@@ -1,5 +1,7 @@
 package kr.hs.emirim.w2038.ex4_5;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,8 +38,18 @@ public class MainActivity extends AppCompatActivity {
         list1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                arrList.remove(position);
-                adapter.notifyDataSetChanged();
+                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+                dialog.setTitle("삭제여부 확인");
+                dialog.setMessage("정말로 삭제하시겠습니까?");
+                dialog.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        arrList.remove(position);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+                dialog.setNegativeButton("취소", null);
+                dialog.show();
                 return false;
             }
         });
