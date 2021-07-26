@@ -3,6 +3,7 @@ package kr.hs.emirim.w2038.ex4_5;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 arrList.add(edtItem.getText().toString());
                 adapter.notifyDataSetChanged();
+            }
+        });
+        list1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                arrList.remove(position);
+                adapter.notifyDataSetChanged();
+                return false;
             }
         });
     }
